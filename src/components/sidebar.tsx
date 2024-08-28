@@ -12,8 +12,6 @@ export function Sidebar() {
   const pathname = usePathname()
   const session = useSession()
 
-  console.log(session)
-
   async function handleSignOut() {
     await signOut({ callbackUrl: '/login' })
   }
