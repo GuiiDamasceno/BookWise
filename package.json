@@ -8,19 +8,47 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@nextui-org/modal": "^2.0.39",
+    "@nextui-org/react": "^2.4.6",
+    "@phosphor-icons/react": "^2.1.5-alpha.3",
+    "@prisma/client": "^5.18.0",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "axios": "^1.7.4",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
+    "framer-motion": "^11.3.24",
+    "lucide-react": "^0.429.0",
+    "next": "14.2.5",
+    "next-auth": "^4.24.7",
+    "phosphor-react": "^1.4.1",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.5"
+    "react-hook-form": "^7.52.2",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
+    "@rocketseat/eslint-config": "^2.2.2",
+    "@types/node": "^20.16.1",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
     "postcss": "^8",
+    "prisma": "^5.18.0",
+    "tailwind-scrollbar": "^3.1.0",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
