@@ -47,7 +47,7 @@ export interface FeedItems {
 
 export default function Home() {
   return (
-    <div className="h-full">
+    <div className="h-screen">
       <div className="flex flex-col lg:grid lg:grid-cols-8 2xl:mr-36 w-full">
         <Header />
 
