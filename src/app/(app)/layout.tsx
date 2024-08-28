@@ -9,6 +9,7 @@ import { Metadata } from 'next'
 const nunitoSans = NunitoSans({
   subsets: ['latin'],
   variable: '--font-nunito_sans',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {

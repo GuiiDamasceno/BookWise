@@ -8,6 +8,7 @@ import { authOptions } from '@/lib/auth-options'
 const nunitoSans = NunitoSans({
   subsets: ['latin'],
   variable: '--font-nunito_sans',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
