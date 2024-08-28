@@ -47,7 +47,7 @@ export interface FeedItems {
 
 export default function Home() {
   return (
-    <div className="flex flex-col lg:grid lg:grid-cols-8 h-full 2xl:mr-36 w-full">
+    <div className="flex flex-col lg:grid lg:grid-cols-8 h-screen 2xl:mr-36 w-full">
       <Header />
 
       <FeedList />

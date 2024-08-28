@@ -1,6 +1,6 @@
 import { NextAuthOptions } from 'next-auth'
-import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
 import { PrismaAdapter } from '../lib/auth/prisma-adapter'
+import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
 import GitHubProvider, { GithubProfile } from 'next-auth/providers/github'
 
 export const authOptions: NextAuthOptions = {
@@ -24,8 +24,8 @@ export const authOptions: NextAuthOptions = {
       profile(profile: GithubProfile) {
         return {
           id: profile.id.toString(),
-          name: profile.name ?? profile.login,
-          email: profile.email,
+          name: profile.name!,
+          email: profile.email!,
           avatar_url: profile.avatar_url,
         }
       },

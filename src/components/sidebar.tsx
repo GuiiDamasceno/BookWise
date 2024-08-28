@@ -12,11 +12,11 @@ export function Sidebar() {
   const pathname = usePathname()
   const session = useSession()
 
+  console.log(session)
+
   async function handleSignOut() {
     await signOut({ callbackUrl: '/login' })
   }
-
-  console.log(session)
 
   const isSignedIn = session.status === 'authenticated'
 
@@ -89,10 +89,7 @@ export function Sidebar() {
               className="flex flex-col lg:flex-row items-center justify-center gap-2 hover:text-gray-300 transition-all"
             >
               <Image
-                src={
-                  String(session.data.user.avatar_url) ||
-                  '/avatar-placeholder.png'
-                }
+                src={session.data.user.avatar_url || '/avatar-placeholder.png'}
                 width={30}
                 height={30}
                 alt=""
