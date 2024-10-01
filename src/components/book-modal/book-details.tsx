@@ -1,8 +1,8 @@
+import { Book } from '@/app/(app)/(home)/page'
 import { StartRating } from '@/components/stars-rating'
 import { api } from '@/lib/axios'
 import { Bookmark, BookOpen } from '@phosphor-icons/react/dist/ssr'
 import Image from 'next/image'
-import { Book } from '../../(home)/page'
 
 interface BookDetailsProps {
   id: string
