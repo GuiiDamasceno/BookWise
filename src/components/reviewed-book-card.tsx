@@ -68,13 +68,8 @@ export function ReviewedBookCard(props: ReviewedBooksCardProps) {
               <p className="text-sm text-gray-300 line-clamp-3">
                 {props.book.summary}
               </p>
-              {/* <Link href={`/books/${props.book_id}`}>
-              <TextButton>Ver mais</TextButton>
-            </Link> */}
 
-              <BookModal id={props.book_id}>
-                <TextButton>Ver mais</TextButton>
-              </BookModal>
+              <TextButton>Ver mais</TextButton>
             </div>
           </div>
         </div>

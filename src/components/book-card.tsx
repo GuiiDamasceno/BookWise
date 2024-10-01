@@ -15,9 +15,9 @@ interface PopularBookCardProps extends PopularBook {
 
 export function BookCard(props: PopularBookCardProps) {
   return (
-    <div className="relative bg-gray-900 w-full mb-2 p-3 rounded-lg border-[3px] border-transparent hover:border-[3px] hover:border-blue-900">
+    <div className="relative bg-gray-900 w-full mb-2 p-3 rounded-lg border-[3px] border-transparent hover:border-[3px]  hover:border-blue-900">
       {props.alreadyRead && (
-        <div className="absolute top-0 right-0 bg-cyan-950 text-teal-500 px-2 py-1 rounded-es-lg rounded-se-lg font-bold text-xs">
+        <div className="absolute top-0 right-0 bg-cyan-950 text-teal-500 px-2 py-1 rounded-es-md rounded-se-md font-bold text-xs">
           LIDO
         </div>
       )}
