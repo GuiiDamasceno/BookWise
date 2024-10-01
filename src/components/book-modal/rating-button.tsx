@@ -1,6 +1,6 @@
 'use client'
 
-import { Modal } from '@/components/modal'
+import { LoginModal } from '@/components/login-modal'
 import { TextButton } from '@/components/text-button'
 import { useRating } from '@/contexts/rating'
 
@@ -23,9 +23,9 @@ export function RatingButton() {
           Avaliar
         </button>
       ) : (
-        <Modal>
+        <LoginModal>
           <TextButton>Avaliar</TextButton>
-        </Modal>
+        </LoginModal>
       )}
     </>
   )

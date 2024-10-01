@@ -15,6 +15,7 @@ export interface Book {
   rate: number
   summary: string
   total_pages: number
+  alreadyRead: boolean
   categories: {
     id: string
     name: string
@@ -48,7 +49,7 @@ export interface FeedItems {
 export default function Home() {
   return (
     <div className="h-screen">
-      <div className="flex flex-col lg:grid lg:grid-cols-8 2xl:mr-36 w-full">
+      <div className="flex flex-col lg:grid lg:grid-cols-8 2xl:mr-36 w-full max-w-[1360px]">
         <Header />
 
         <FeedList />

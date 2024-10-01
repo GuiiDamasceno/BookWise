@@ -3,7 +3,6 @@
 import { serverSession } from '@/lib/auth/get-server-session'
 import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
-// import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
 
 const createRateSchema = z.object({

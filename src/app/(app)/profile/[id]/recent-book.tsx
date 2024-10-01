@@ -5,8 +5,8 @@ import { api } from '@/lib/axios'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import ptBR from 'dayjs/locale/pt-br'
-import Link from 'next/link'
 import { UserRatingSearchParams } from './page'
+import { BookModal } from '@/components/book-modal/index'
 
 dayjs.extend(relativeTime)
 dayjs.locale(ptBR)
@@ -50,11 +50,11 @@ export async function RecentBook({ userId, searchParams }: RecentBookProps) {
     <>
       {ratings.map((rating) => {
         return (
-          <div key={rating.id} className="mt-8">
-            <span>{dayjs(rating.created_at).fromNow()}</span>
-            <div className="bg-gray-900 p-3 rounded-lg mt-3 border-[3px] border-transparent hover:border-[3px] hover:border-blue-900">
-              <div className="flex gap-4">
-                <Link href={`/books/${rating.book.id}`}>
+          <BookModal key={rating.id} id={rating.book.id}>
+            <div className="mt-8 cursor-pointer">
+              <span>{dayjs(rating.created_at).fromNow()}</span>
+              <div className="bg-gray-900 p-3 rounded-lg mt-3 border-[3px] border-transparent hover:border-[3px] hover:border-blue-900">
+                <div className="flex gap-4">
                   <Image
                     src={`/${rating.book.cover_url}`}
                     alt=""
@@ -62,26 +62,26 @@ export async function RecentBook({ userId, searchParams }: RecentBookProps) {
                     height={150}
                     className="object-cover w-[120px] h-[160px] rounded-md hover:scale-105 transition"
                   />
-                </Link>
-                <div className="flex flex-col justify-between">
-                  <div className="flex flex-col gap-2">
-                    <Link href={`/books/${rating.book.id}`}>
+                  <div className="flex flex-col justify-between">
+                    <div className="flex flex-col gap-2">
                       <h1 className="text-lg text-gray-100 md:max-w-[200px] lg:max-w-full hover:text-gray-300">
                         {rating.book.name}
                       </h1>
-                    </Link>
-                    <span className="text-gray-400 text-sm">
-                      {rating.book.author}
+                      <span className="text-gray-400 text-sm">
+                        {rating.book.author}
+                      </span>
+                    </div>
+                    <span className="flex gap-2">
+                      <StartRating rating={rating.rate} />
                     </span>
                   </div>
-                  <span className="flex gap-2">
-                    <StartRating rating={rating.rate} />
-                  </span>
                 </div>
+                <p className="mt-8 text-gray-300 text-sm">
+                  {rating.description}
+                </p>
               </div>
-              <p className="mt-8 text-gray-300 text-sm">{rating.description}</p>
             </div>
-          </div>
+          </BookModal>
         )
       })}
     </>

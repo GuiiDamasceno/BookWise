@@ -7,6 +7,7 @@ import { BookCard, PopularBook } from '@/components/book-card'
 import { Categories } from './categories'
 
 import { Metadata } from 'next'
+import { serverSession } from '@/lib/auth/get-server-session'
 
 export type ExploreSearchParams = {
   category?: string
@@ -21,16 +22,16 @@ export const metadata: Metadata = {
   title: 'Explorar',
 }
 
-async function getPopularBook(
-  searchParams?: ExploreSearchParams,
-): Promise<{ message?: string; books: PopularBook[] } | undefined> {
+async function getBooks(searchParams?: ExploreSearchParams) {
   try {
+    const session = await serverSession()
+
     const params = new URLSearchParams(searchParams)
-    const url = `/books?${params.toString()}`
+    const url = `/books?${params.toString()}&session=${session?.user.id}`
 
     const response = await api.get(url)
 
-    const books = response.data
+    const books = response.data as { message?: string; books: PopularBook[] }
 
     return books
   } catch (error) {
@@ -42,11 +43,15 @@ async function getPopularBook(
 }
 
 export default async function Explore({ searchParams }: ExploreProps) {
-  const data = await getPopularBook(searchParams)
+  const data = await getBooks(searchParams)
+
+  if (!data) {
+    return
+  }
 
   return (
     // SIDEBAR
-    <div className="md:grid md:grid-cols-8 h-screen 2xl:mr-36 w-full">
+    <div className="md:grid md:grid-cols-8 h-screen 2xl:mr-36 w-full max-w-[1360px]">
       <Header />
 
       <div className="flex flex-col col-span-8 md:m-8 m-4">
@@ -65,7 +70,7 @@ export default async function Explore({ searchParams }: ExploreProps) {
         <Categories />
 
         <div className="grid grid-cols-2 mt-8 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {data?.books &&
+          {data.books &&
             data.books.map((book) => {
               return <BookCard key={book.id} {...book} />
             })}

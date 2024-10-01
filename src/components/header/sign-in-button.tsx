@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { SignIn, SignOut } from 'phosphor-react'
 import { signOut, useSession } from 'next-auth/react'
-import { Modal } from '../modal'
+import { LoginModal } from '../login-modal'
 
 export function SignInButton() {
   const session = useSession()
@@ -33,12 +33,12 @@ export function SignInButton() {
           <SignOut size={24} className="text-red-500" />
         </button>
       ) : (
-        <Modal>
+        <LoginModal>
           <button className="flex lg:flex-row items-center justify-center gap-2 hover:scale-105 transition-all">
             <p className="text-nowrap">Fazer login</p>{' '}
             <SignIn size={24} className="text-cyan-500" />
           </button>
-        </Modal>
+        </LoginModal>
       )}
     </>
   )

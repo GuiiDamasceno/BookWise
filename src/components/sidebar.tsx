@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Binoculars, ChartLineUp, SignOut, User } from 'phosphor-react/dist'
-import { Modal } from './modal'
+import { LoginModal } from './login-modal'
 import { SignIn } from '@phosphor-icons/react/dist/ssr'
 
 export function Sidebar() {
@@ -100,7 +100,7 @@ export function Sidebar() {
               />
             </button>
           ) : (
-            <Modal>
+            <LoginModal>
               <button className="flex flex-col lg:flex-row items-center justify-center gap-2 hover:text-gray-300 transition-all">
                 <p className="text-nowrap">Fazer login</p>{' '}
                 <SignIn
@@ -108,7 +108,7 @@ export function Sidebar() {
                   className="text-cyan-500 hover:scale-105 transition-all"
                 />
               </button>
-            </Modal>
+            </LoginModal>
           )}
         </div>
       </div>

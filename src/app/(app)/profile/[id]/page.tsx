@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 
 export default async function Profile({ params, searchParams }: ProfileProps) {
   return (
-    <div className="md:grid md:grid-cols-8 h-screen 2xl:mr-36 w-full">
+    <div className="md:grid md:grid-cols-8 h-screen 2xl:mr-36 w-full max-w-[1360px]">
       <Header />
 
       <div className="flex flex-col col-span-6 md:col-span-5 xl:col-span-6 md:m-8 m-4">
@@ -56,7 +56,7 @@ export default async function Profile({ params, searchParams }: ProfileProps) {
             <UserListProfile userId={params.id} />
           </div>
 
-          <div className="pb-2">
+          <div className="pb-2 w-full max-w-[700px]">
             <RecentBook userId={params.id} searchParams={searchParams} />
           </div>
         </div>

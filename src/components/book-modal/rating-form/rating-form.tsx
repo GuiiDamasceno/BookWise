@@ -7,7 +7,6 @@ import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRating } from '@/contexts/rating'
 import { useSession } from 'next-auth/react'
-import { useParams } from 'next/navigation'
 import { CreateRate } from './create-rate'
 import { StarsEvaluation } from './stars-evaluation'
 
@@ -21,7 +20,11 @@ const writeCommentSchema = z.object({
 
 type WriteCommentData = z.infer<typeof writeCommentSchema>
 
-export function RatingForm() {
+interface RatingFormProps {
+  bookId: string
+}
+
+export function RatingForm({ bookId }: RatingFormProps) {
   const { ratingFormVisible: visible } = useRating()
   const {
     register,
@@ -37,15 +40,12 @@ export function RatingForm() {
     },
   })
 
-  const params = useParams<{ id: string }>()
   const { setRatingFormVisible } = useRating()
   const session = useSession()
 
   if (!visible) {
     return null
   }
-
-  const bookId = params.id
 
   async function handleSubmitComment(data: WriteCommentData) {
     if (session.data?.user.id) {
@@ -54,6 +54,8 @@ export function RatingForm() {
         userId: session?.data?.user.id,
         bookId,
       }
+
+      console.log(body)
 
       const response = await CreateRate(body)
 

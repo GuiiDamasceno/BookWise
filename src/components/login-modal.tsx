@@ -9,11 +9,11 @@ import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 import { ReactNode } from 'react'
 
-interface ModalProps {
+interface LoginModalProps {
   children: ReactNode
 }
 
-export function Modal({ children }: ModalProps) {
+export function LoginModal({ children }: LoginModalProps) {
   async function handleGoogleSignIn() {
     await signIn('google', { callbackUrl: '/' })
   }
